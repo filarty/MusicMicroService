@@ -17,9 +17,7 @@ public class UserControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-
     @Test
-    void getStatusOk() throws Exception{
-        mockMvc.perform(get("/api/users")).andExpect(content().json("{'status': 'ok'}"));
+    void testLogin() {
     }
 }

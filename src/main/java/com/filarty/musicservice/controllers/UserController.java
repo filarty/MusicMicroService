@@ -11,7 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @GetMapping("/login")
-    public String login() {
+    public String getLogin() {
+        return
+                "{status: ok}";
+    }
+
+    @PostMapping("/login")
+    public String sendLogin() {
         return
                 "{status: ok}";
     }

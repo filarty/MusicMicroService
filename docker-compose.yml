@@ -1,0 +1,15 @@
+services:
+  postgres:
+    container_name: postgres_user
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=POSTGRES_PASS
+    env_file:
+      - .env
+    command: -d postgres
+    volumes:
+      - postgres-users-data:/home/db
+volumes:
+  postgres-users-data:

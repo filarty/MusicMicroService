@@ -5,7 +5,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=POSTGRES_PASS
+      POSTGRES_PASSWORD: ${POSTGRES_PASS}
     env_file:
       - .env
     command: -d postgres

@@ -4,39 +4,41 @@ import com.filarty.musicservice.dao.User.GetUser;
 import com.filarty.musicservice.models.Enums.Role;
 import com.filarty.musicservice.models.User;
 import com.filarty.musicservice.repositories.UserRepository;
-import com.filarty.musicservice.services.UserService;
-import lombok.RequiredArgsConstructor;
-import org.hibernate.mapping.List;
-import org.junit.Before;
+import com.filarty.musicservice.services.Impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.mockito.Mockito.when;
-
 import org.junit.jupiter.api.Assertions;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
-
-    @MockBean
-    private UserService userService;
-
     @Mock
     private UserRepository userRepository;
+
+    @InjectMocks
+    private UserServiceImpl userService;
 
     private static User user;
     private static GetUser getUser;
 
     @BeforeEach
-    public void setUser() {
+    public void init() {
+        createUser();
+        getUser = new GetUser();
+        getUser.setUsername(user.getUserName());
+        getUser.setEmail(user.getEmail());
+        getUser.setActive(user.isActive());
+    }
+
+    public void createUser() {
         user = new User();
         user.setUserName("filarty");
         user.setEmail("filarty@gmail.com");
@@ -45,13 +47,6 @@ public class UserServiceTest {
         roles.add(Role.USER);
         user.setRoles(roles);
         user.setActive(true);
-    }
-
-    @BeforeEach
-    public void SetGetUser() {
-        getUser.setUsername(user.getUserName());
-        getUser.setEmail(user.getEmail());
-        getUser.setActive(user.isActive());
     }
 
 

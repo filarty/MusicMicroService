@@ -20,7 +20,6 @@ public class UserServiceImpl implements UserService {
     public GetUser findUserById(Long id) {
         User user = userRepository.findById(id).orElse(new User());
         GetUser getUser = new GetUser();
-        log.info("dwadawd");
         getUser.setUsername(user.getUserName());
         getUser.setEmail(user.getEmail());
         getUser.setActive(user.isActive());

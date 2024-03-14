@@ -1,15 +1,13 @@
 package com.filarty.musicservice.services;
 
-import com.filarty.musicservice.models.User;
-import com.filarty.musicservice.repositories.UserRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
+import com.filarty.musicservice.dao.User.CreateUser;
+import com.filarty.musicservice.dao.User.GetUser;
+import com.filarty.musicservice.dao.User.UpdateUser;
 
-@Service
-@RequiredArgsConstructor
-@Slf4j
-public class UserService {
-    private final UserRepository userRepository;
 
+public interface UserService {
+    public GetUser findUserById(Long id);
+    public GetUser saveUser(CreateUser createUser);
+    public GetUser deleteUserById(Long id);
+    public GetUser updateUser(UpdateUser updateUser);
 }

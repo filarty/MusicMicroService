@@ -25,4 +25,6 @@ public class User {
     @ElementCollection(targetClass = Role.class)
     @JoinTable(name = "roles", joinColumns = @JoinColumn(name = "user_id"))
     private List<Role> roles;
+    @Column(name = "is_active")
+    private boolean isActive;
 }

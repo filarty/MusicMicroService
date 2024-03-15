@@ -1,10 +1,10 @@
 package com.filarty.musicservice.sevices_tests;
 
-import com.filarty.musicservice.dao.User.GetUser;
+import com.filarty.musicservice.dto.user.GetUser;
 import com.filarty.musicservice.models.Enums.Role;
 import com.filarty.musicservice.models.User;
-import com.filarty.musicservice.repositories.UserRepository;
-import com.filarty.musicservice.services.Impl.UserServiceImpl;
+import com.filarty.musicservice.repository.UserRepository;
+import com.filarty.musicservice.service.Impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -42,10 +42,8 @@ public class UserServiceTest {
         user = new User();
         user.setUserName("filarty");
         user.setEmail("filarty@gmail.com");
-        user.setPasword("2124312214");
-        ArrayList<Role> roles = new ArrayList<>();
-        roles.add(Role.USER);
-        user.setRoles(roles);
+        user.setPassword("2124312214");
+        user.addRole(Role.USER);
         user.setActive(true);
     }
 

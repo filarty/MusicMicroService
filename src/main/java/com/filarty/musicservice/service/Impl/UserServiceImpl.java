@@ -18,14 +18,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public GetUser findUserById(Long id) {
-        User user = userRepository.findById(id).orElse(new User());
-        GetUser getUser = new GetUser();
-        getUser.setUsername(user.getUserName());
-        getUser.setEmail(user.getEmail());
-        getUser.setActive(user.isActive());
-        return getUser;
+        return null;
     }
-
     @Override
     public GetUser saveUser(CreateUser createUser) {
         return null;
